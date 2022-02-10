@@ -13,11 +13,61 @@ const SignIn = () => {
   const { email, password } = formData
 
   const navigate = useNavigate()
+  const handleClick = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }))
+  }
 
   return (
-    <div>
-      <h1>SignIn</h1>
-    </div>
+    <>
+      <div className='pageContainer'>
+        <header>
+          <p className='pageHeader'>Welcome Back!</p>
+        </header>
+        <form>
+          <input
+            type='email'
+            name='email'
+            id='email'
+            placeholder='Email'
+            className='emailInput'
+            value={email}
+            onChange={handleClick}
+          />
+          <div className='passwordInputDiv'>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={handleClick}
+              placeholder='Password'
+              className='passwordInput'
+              id='password'
+            />
+            <img
+              src={visibilityIcon}
+              alt='show password'
+              className='showPassword'
+              onClick={() => setShowPassword((prevState) => !prevState)}
+            />
+          </div>
+          <Link to='/forgot-password' className='forgotPasswordLink'>
+            Forgot Password
+          </Link>
+          <div className='signInBar'>
+            <p className='signInText'>Sign In</p>
+            <button className='signInButton'>
+              <ArrorRightIcon fill='#fffffff' width='34px' height='34px' />
+            </button>
+          </div>
+        </form>
+        {/* Google OAuth */}
+        <Link to='/sign-up' className='registerLink'>
+          Sign Up instead
+        </Link>
+      </div>
+    </>
   )
 }
 
