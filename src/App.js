@@ -1,5 +1,6 @@
 // React Components
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
 // Components & Pages
 import Navbar from './components/Navbar'
@@ -24,6 +25,7 @@ function App() {
         </Routes>
         <Navbar />
       </BrowserRouter>
+      <ToastContainer />
     </>
   )
 }
