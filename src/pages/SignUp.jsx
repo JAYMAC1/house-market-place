@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -51,6 +52,7 @@ const SignUp = () => {
 
       navigate('/sign-in')
     } catch (error) {
+      toast.error('Error signing up to site')
       console.log(error)
     }
   }
