@@ -37,11 +37,11 @@ const ForgotPassword = () => {
             value={email}
             onChange={handleChange}
           />
-          <Link to='/sign-in' className='forgotPasswordlink'>
+          <Link to='/sign-in' className='forgotPasswordLink'>
             Sign In
           </Link>
           <div className='signInBar'>
-            <div className='signInTtext'>Send Reset Link</div>
+            <div className='signInText'>Send Reset Link</div>
             <button className='signInButton'>
               <ArrowRightIcon fill='#fffffff' width='34px' height='34px' />
             </button>
