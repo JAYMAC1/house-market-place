@@ -74,6 +74,7 @@ const Category = () => {
                   key={listing.id}
                   listing={listing.data}
                   id={listing.id}
+                  onDelete={false}
                 />
               ))}
             </ul>
