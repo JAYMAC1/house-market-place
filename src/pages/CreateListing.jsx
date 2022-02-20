@@ -11,6 +11,7 @@ import Spinner from '../components/Spinner'
 const CreateListing = () => {
   // component level state
   const [geoLocationEnabled, setGeoLocationEnabled] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     type: 'rent',
     name: '',
@@ -37,6 +38,8 @@ const CreateListing = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setFormData({ ...formData, userRef: user.uid })
+        } else {
+          navigate('/sign-in')
         }
       })
     }
@@ -45,6 +48,9 @@ const CreateListing = () => {
     }
   }, [isMounted])
 
+  if (isLoading) {
+    return <Spinner />
+  }
   return <div>CreateListing</div>
 }
 
