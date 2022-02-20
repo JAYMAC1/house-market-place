@@ -7,6 +7,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 // misc components
 import Spinner from '../components/Spinner'
+import { toast } from 'react-toastify'
 
 const CreateListing = () => {
   // component level state
@@ -70,7 +71,22 @@ const CreateListing = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formData)
+
+    setIsLoading(true)
+
+    // Check discount is not equal or greater than regular price
+    if (discountedPrice >= regularPrice) {
+      setIsLoading(false)
+      toast.error('Discount Price must be less than Regular Price')
+      return
+    }
+
+    // Check no more than 5 images are bing uploaded
+    if (images.length > 6) {
+      setIsLoading(false)
+      toast.error('You can only upload a max of 6 images')
+      return
+    }
   }
 
   const onMutate = (e) => {
