@@ -28,6 +28,22 @@ const CreateListing = () => {
     longitude: 0,
   })
 
+  const {
+    type,
+    name,
+    bedrooms,
+    bathrooms,
+    parking,
+    furnished,
+    address,
+    offer,
+    regularPrice,
+    discountedPrice,
+    images,
+    latitude,
+    longitude,
+  } = formData
+
   // enable Auth
   const auth = getAuth()
   const navigate = useNavigate()
@@ -51,7 +67,53 @@ const CreateListing = () => {
   if (isLoading) {
     return <Spinner />
   }
-  return <div>CreateListing</div>
+
+  const handleSubmit = (e) => {
+    e.preventDefaut()
+  }
+
+  const onMutate = () => {}
+  return (
+    <div className='profile'>
+      <header>
+        <p className='pageheader'>Create a Listing</p>
+      </header>
+      <main>
+        <form onSubmit={handleSubmit}>
+          <label className='formLabel'>Sell / Rent</label>
+          <div className='formButtons'>
+            <button
+              type='button'
+              className={type === 'sale' ? 'formButtonActive' : 'formButton'}
+              id='type'
+              value='sale'
+              onClick={onMutate}>
+              Sell
+            </button>
+            <button
+              type='button'
+              className={type === 'rent' ? 'formButtonActive' : 'formButton'}
+              id='type'
+              value='sale'
+              onClick={onMutate}>
+              Rent
+            </button>
+          </div>
+          <label className='formLabel'>Name</label>
+          <input
+            className='formInputName'
+            type='text'
+            id='name'
+            value={name}
+            onChange={onMutate}
+            maxLength='32'
+            minLength='10'
+            required
+          />
+        </form>
+      </main>
+    </div>
+  )
 }
 
 export default CreateListing
