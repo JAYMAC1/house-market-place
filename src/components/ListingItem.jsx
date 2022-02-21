@@ -49,7 +49,7 @@ const ListingItem = ({ listing, id, onDelete }) => {
         <DeleteIcon
           className='removeIcon'
           fill='rgb(231, 76, 60)'
-          handleClick={() => onDelete(listing.id, listing.name)}
+          onClick={() => onDelete(listing.id)}
         />
       )}
     </li>
