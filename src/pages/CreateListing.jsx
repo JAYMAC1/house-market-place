@@ -77,6 +77,7 @@ const CreateListing = () => {
   if (isLoading) {
     return <Spinner />
   }
+  console.log()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -84,7 +85,7 @@ const CreateListing = () => {
     setIsLoading(true)
 
     // Check discount is not equal or greater than regular price
-    if (discountedPrice >= regularPrice) {
+    if (+discountedPrice >= +regularPrice) {
       setIsLoading(false)
       toast.error('Discount Price must be less than Regular Price')
       return
