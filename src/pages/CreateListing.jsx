@@ -69,7 +69,7 @@ const CreateListing = () => {
     return <Spinner />
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     setIsLoading(true)
@@ -87,6 +87,24 @@ const CreateListing = () => {
       toast.error('You can only upload a max of 6 images')
       return
     }
+
+    let geolocation = {}
+    let location
+    console.log(address)
+
+    if (geolocationEnabled) {
+      const repsonse = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
+      )
+
+      const data = await repsonse.json()
+      console.log(data)
+    } else {
+      geolocation.lat = latitude
+      geolocation.lng = longitude
+      location = address
+    }
+    setIsLoading(false)
   }
 
   const onMutate = (e) => {
