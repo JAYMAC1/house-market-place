@@ -1,9 +1,9 @@
 // react packages
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 // firebase services
-import { collection, doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import { db } from '../firebase/config'
 
@@ -20,7 +20,6 @@ const Listing = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [shareLinkCopied, setShareLinkCopied] = useState(false)
 
-  const navigate = useNavigate()
   const params = useParams()
   const auth = getAuth()
 

@@ -221,7 +221,7 @@ const CreateListing = () => {
   return (
     <div className='profile'>
       <header>
-        <p className='pageHeader'>Create a Listing</p>
+        <p className='pageheader'>Create a Listing</p>
       </header>
       <main>
         <form onSubmit={handleSubmit}>
